@@ -1,56 +1,406 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Terms of Service | Flock Manager</title>
+  <title>Terms of Service – Flock Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    body{margin:0;font-family:Segoe UI,Arial,sans-serif;color:#182235;background:#f7fbff;line-height:1.65}
-    main{max-width:900px;margin:0 auto;padding:44px 22px 70px}
-    a{color:#0c6f82;font-weight:700}
-    h1{color:#1c2957;line-height:1.1;margin-bottom:8px}
-    h2{color:#1c2957;margin-top:30px}
-    .updated{color:#627086;font-size:14px;margin-top:0}
-    .panel{background:#fff;border:1px solid #d9e1ec;border-radius:8px;padding:22px;box-shadow:0 14px 30px rgba(24,34,53,.08)}
-    ul{padding-left:22px}
+    :root {
+      --ink: #182235;
+      --muted: #627086;
+      --line: #d9e1ec;
+      --soft: #eef4f8;
+      --panel: #ffffff;
+      --navy: #263a78;
+      --navy-2: #1c2957;
+      --green: #137a63;
+      --teal: #0c8a9d;
+      --gold: #b77d11;
+      --coral: #d9573c;
+      --focus: #2e7dd7;
+      --shadow: 0 18px 38px rgba(24,34,53,.08);
+      font-family: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: radial-gradient(circle at 90% 6%, rgba(183,125,17,.07), transparent 30%),
+                  linear-gradient(135deg, #f7fbff 0%, #fff9f0 50%, #edf5f4 100%);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── TOP NAV ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex; align-items: center; gap: 14px;
+      height: 64px;
+    }
+    .brand-mark {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy-2), var(--teal));
+      display: grid; place-items: center;
+      color: #fff; font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 13px; flex-shrink: 0;
+    }
+    .brand-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 17px;
+      color: var(--navy-2); text-decoration: none;
+    }
+    .brand-name span { color: var(--teal); }
+    .back-link {
+      margin-left: auto; color: var(--navy-2);
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--line); border-radius: 6px;
+      background: var(--panel);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .back-link:hover { border-color: var(--teal); box-shadow: 0 4px 12px rgba(12,138,157,.12); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(56px,8vw,96px) clamp(20px,5vw,80px) 0;
+      max-width: 860px; margin: 0 auto;
+    }
+    .doc-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--gold), #d4943a);
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 99px; margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(32px, 5.5vw, 52px);
+      font-weight: 800; line-height: 1.05;
+      color: var(--navy-2); margin: 0 0 16px;
+      letter-spacing: -.02em;
+    }
+    .hero-meta {
+      color: var(--muted); font-size: 14px;
+      display: flex; flex-wrap: wrap; gap: 6px 20px; margin-bottom: 36px;
+    }
+    .divider { height: 1px; background: var(--line); margin: 0 0 48px; }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 860px; margin: 0 auto;
+      padding: 0 clamp(20px,5vw,80px) 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px; align-items: start;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky; top: 80px;
+      background: var(--panel);
+      border: 1px solid var(--line); border-radius: 10px;
+      padding: 20px; box-shadow: var(--shadow);
+    }
+    .toc-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: var(--muted); margin: 0 0 12px;
+    }
+    .toc a {
+      display: block; text-decoration: none;
+      color: var(--muted); font-size: 13px;
+      padding: 5px 0 5px 10px;
+      border-left: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      line-height: 1.4;
+    }
+    .toc a:hover { color: var(--navy-2); border-left-color: var(--gold); }
+
+    /* ── SECTIONS ── */
+    .doc-body section { margin-bottom: 44px; }
+    .doc-body h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--navy-2); margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-icon {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: linear-gradient(135deg, var(--gold), #d4943a);
+      display: inline-grid; place-items: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+    .doc-body p { margin: 0 0 14px; color: var(--ink); }
+    .doc-body ul, .doc-body ol { margin: 0 0 14px; padding-left: 20px; }
+    .doc-body li { margin-bottom: 7px; }
+    .doc-body a { color: var(--teal); font-weight: 600; text-underline-offset: 3px; }
+    .doc-body strong { color: var(--navy-2); }
+
+    .highlight-box {
+      background: linear-gradient(135deg,
+        color-mix(in srgb,var(--teal) 8%,var(--panel)),
+        color-mix(in srgb,var(--navy-2) 4%,var(--panel)));
+      border: 1px solid color-mix(in srgb,var(--teal) 25%,var(--line));
+      border-left: 4px solid var(--teal);
+      border-radius: 8px; padding: 16px 20px; margin: 0 0 14px;
+    }
+    .highlight-box p { margin: 0; }
+
+    .warning-box {
+      background: color-mix(in srgb,var(--coral) 7%,var(--panel));
+      border: 1px solid color-mix(in srgb,var(--coral) 28%,var(--line));
+      border-left: 4px solid var(--coral);
+      border-radius: 8px; padding: 16px 20px; margin: 0 0 14px;
+    }
+    .warning-box p { margin: 0; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px; margin: 0 0 14px;
+    }
+    .grid-card {
+      border: 1px solid var(--line);
+      border-radius: 8px; padding: 14px 16px;
+      background: var(--soft);
+    }
+    .grid-card strong {
+      display: block; margin-bottom: 5px;
+      font-size: 14px;
+    }
+    .grid-card p { margin: 0; font-size: 13px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px clamp(20px,5vw,80px);
+      display: flex; flex-wrap: wrap;
+      align-items: center; gap: 12px;
+      justify-content: space-between;
+      color: var(--muted); font-size: 13px;
+    }
+    footer a { color: var(--navy-2); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 740px) {
+      .content-wrap { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <p><a href="index.html">Back to Flock Manager</a></p>
-    <div class="panel">
-      <h1>Terms of Service</h1>
-      <p class="updated">Last updated: May 25, 2026</p>
-      <p>These Terms of Service govern the use of Flock Manager, a browser-based church administration tool provided by KISSWARD MULTIMEIA.</p>
 
-      <h2>Use of the App</h2>
-      <p>You may use Flock Manager to manage church records, member information, giving records, attendance, reports, exports, and backups. You are responsible for ensuring that all information entered into the app is accurate and that you have permission to store it.</p>
+<header>
+  <div class="brand-mark">FM</div>
+  <a class="brand-name" href="https://flockmanager.github.io/flockmanager/">Flock<span>Manager</span></a>
+  <a class="back-link" href="https://flockmanager.github.io/flockmanager/">← Back to App</a>
+</header>
 
-      <h2>Google Sign-In and Drive Backup</h2>
-      <p>If you sign in with Google and grant Drive permission, Flock Manager may save and retrieve its own backup file in your Google Drive app data storage. You are responsible for using the correct Google account for your organization.</p>
+<div class="hero">
+  <div class="doc-badge">📜 Legal Document</div>
+  <h1>Terms of Service</h1>
+  <div class="hero-meta">
+    <span>🗓 Effective: 25 May 2026</span>
+    <span>🏢 KISSWARD MULTIMEIA</span>
+    <span>🌐 flockmanager.github.io/flockmanager</span>
+  </div>
+  <div class="divider"></div>
+</div>
 
-      <h2>Data Responsibility</h2>
-      <p>The app saves data locally in the browser and may sync a backup to Google Drive. Users should keep regular backups and protect access to devices and Google accounts used with the app.</p>
+<div class="content-wrap">
 
-      <h2>Acceptable Use</h2>
+  <!-- TABLE OF CONTENTS -->
+  <aside class="toc">
+    <p class="toc-title">Contents</p>
+    <a href="#acceptance">1. Acceptance</a>
+    <a href="#description">2. Description</a>
+    <a href="#eligibility">3. Eligibility</a>
+    <a href="#license">4. License to Use</a>
+    <a href="#your-data">5. Your Data</a>
+    <a href="#prohibited">6. Prohibited Use</a>
+    <a href="#google-tos">7. Google Services</a>
+    <a href="#ip">8. Intellectual Property</a>
+    <a href="#disclaimer">9. Disclaimers</a>
+    <a href="#liability">10. Limitation of Liability</a>
+    <a href="#indemnity">11. Indemnification</a>
+    <a href="#termination">12. Termination</a>
+    <a href="#changes">13. Changes</a>
+    <a href="#governing">14. Governing Law</a>
+    <a href="#contact">15. Contact</a>
+  </aside>
+
+  <div class="doc-body">
+
+    <section id="acceptance">
+      <h2><span class="sec-icon">✍</span> 1. Acceptance of Terms</h2>
+      <div class="highlight-box">
+        <p><strong>By accessing or using Flock Manager at <a href="https://flockmanager.github.io/flockmanager/">https://flockmanager.github.io/flockmanager/</a>, you agree to be bound by these Terms of Service.</strong> If you do not agree, do not use the App.</p>
+      </div>
+      <p>These Terms constitute a legally binding agreement between you (or the organisation on whose behalf you act) and <strong>KISSWARD MULTIMEIA</strong> ("we", "us", or "our").</p>
+    </section>
+
+    <section id="description">
+      <h2><span class="sec-icon">📋</span> 2. Description of Service</h2>
+      <p>Flock Manager is a browser-based church administration application that enables authorised church administrators to:</p>
+      <div class="grid-2">
+        <div class="grid-card"><strong>👤 Member Management</strong><p>Create and maintain member profiles, contacts, ministry roles, and leadership records.</p></div>
+        <div class="grid-card"><strong>💰 Giving Records</strong><p>Record tithes, offerings, welfare contributions, and other financial giving by type.</p></div>
+        <div class="grid-card"><strong>📅 Attendance Tracking</strong><p>Log service attendance by gender and age group; view trends and summaries.</p></div>
+        <div class="grid-card"><strong>☁ Backup &amp; Sync</strong><p>Export JSON backups to your device or sync encrypted data to your own Google Drive.</p></div>
+      </div>
+      <p>The App runs client-side in your browser. All church records are stored in your device's IndexedDB and/or your own Google Drive account. KISSWARD MULTIMEIA does not operate a central server that stores congregation data.</p>
+    </section>
+
+    <section id="eligibility">
+      <h2><span class="sec-icon">🪪</span> 3. Eligibility</h2>
+      <p>You must be at least 18 years of age and have the authority to act on behalf of your church or organisation to use this App. By using Flock Manager, you represent that:</p>
       <ul>
-        <li>Do not use the app for unlawful, harmful, or unauthorized purposes.</li>
-        <li>Do not enter information you are not authorized to manage.</li>
-        <li>Do not attempt to copy, resell, or redistribute the app without permission.</li>
+        <li>You are an authorised administrator of the church or organisation whose records you manage.</li>
+        <li>You have obtained any necessary consent from individuals whose personal data you enter into the App, in compliance with applicable data protection laws.</li>
+        <li>You have a valid Google account for authentication purposes.</li>
       </ul>
+    </section>
 
-      <h2>Availability</h2>
-      <p>The app is provided as-is. We may update, change, or discontinue features as needed. We do not guarantee uninterrupted access or error-free operation.</p>
+    <section id="license">
+      <h2><span class="sec-icon">📄</span> 4. License to Use</h2>
+      <p>Subject to your compliance with these Terms, KISSWARD MULTIMEIA grants you a <strong>limited, non-exclusive, non-transferable, revocable licence</strong> to access and use Flock Manager for your internal church administration purposes.</p>
+      <p>This licence does <strong>not</strong> permit you to:</p>
+      <ul>
+        <li>Copy, modify, distribute, sell, or sublicense the App or its source code.</li>
+        <li>Reverse-engineer, decompile, or disassemble any part of the App.</li>
+        <li>Use the App to build a competing product or service.</li>
+        <li>Remove or obscure any copyright, trademark, or proprietary notices.</li>
+      </ul>
+      <p>The App's code is copyright © 2026 KISSWARD MULTIMEIA. All rights reserved. Unauthorised copying, redistribution, or resale is prohibited.</p>
+    </section>
 
-      <h2>Limitation of Liability</h2>
-      <p>To the fullest extent permitted by law, KISSWARD MULTIMEIA is not liable for indirect, incidental, special, or consequential damages arising from use of the app, data loss, account access issues, or third-party service interruptions.</p>
+    <section id="your-data">
+      <h2><span class="sec-icon">🗄</span> 5. Your Data &amp; Responsibilities</h2>
+      <p>You retain full ownership of all data you enter into the App. You are solely responsible for:</p>
+      <ul>
+        <li>The accuracy and legality of all data you enter, including personal data of congregation members.</li>
+        <li>Obtaining valid consent or having a lawful basis for processing personal data of individuals in accordance with applicable laws (e.g. GDPR, POPIA, or other local data protection legislation).</li>
+        <li>Maintaining appropriate access controls so that only authorised personnel use the App on your devices.</li>
+        <li>Creating and securing regular backup exports to prevent data loss.</li>
+        <li>Complying with your church or organisation's own data protection and confidentiality policies.</li>
+      </ul>
+      <div class="warning-box">
+        <p>⚠️ <strong>Important:</strong> Because all data is stored in your browser and your Google Drive, KISSWARD MULTIMEIA has no ability to recover data lost due to browser data deletion, device failure, or accidental deletion. Maintain regular backups.</p>
+      </div>
+    </section>
 
-      <h2>Changes to These Terms</h2>
-      <p>We may update these terms from time to time. Continued use of the app after changes means you accept the updated terms.</p>
+    <section id="prohibited">
+      <h2><span class="sec-icon">🚫</span> 6. Prohibited Use</h2>
+      <p>You agree not to use Flock Manager to:</p>
+      <ul>
+        <li>Process personal data for any purpose other than legitimate church administration.</li>
+        <li>Store data belonging to individuals who have not been members or attendees of your church.</li>
+        <li>Engage in any unlawful activity, including unauthorised data processing or privacy violations.</li>
+        <li>Attempt to compromise, interfere with, or gain unauthorised access to any system, network, or account.</li>
+        <li>Distribute, sell, or disclose congregation member data to third parties without lawful authority and consent.</li>
+        <li>Use automated scripts or bots to interact with the App.</li>
+      </ul>
+    </section>
 
-      <h2>Contact</h2>
-      <p>For questions about these terms, contact KISSWARD MULTIMEIA at <a href="mailto:tooncitigh@gmail.com">tooncitigh@gmail.com</a>.</p>
-    </div>
-  </main>
+    <section id="google-tos">
+      <h2><span class="sec-icon">🔗</span> 7. Google Services</h2>
+      <p>Flock Manager uses Google Sign-In and optionally Google Drive. Your use of these features is additionally governed by:</p>
+      <ul>
+        <li><a href="https://policies.google.com/terms" target="_blank" rel="noopener">Google Terms of Service</a></li>
+        <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
+        <li><a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a></li>
+      </ul>
+      <p>Use of Google services in conjunction with this App must comply with Google's policies. We are not responsible for any changes, interruptions, or discontinuation of Google's services.</p>
+    </section>
+
+    <section id="ip">
+      <h2><span class="sec-icon">©</span> 8. Intellectual Property</h2>
+      <p>All intellectual property rights in the App — including its design, code, branding, user interface, and documentation — are owned by or licensed to KISSWARD MULTIMEIA. The "Flock Manager" name and associated marks are proprietary to KISSWARD MULTIMEIA.</p>
+      <p>Nothing in these Terms transfers ownership of any intellectual property to you. Feedback you provide about the App may be used by us without obligation to you.</p>
+    </section>
+
+    <section id="disclaimer">
+      <h2><span class="sec-icon">⚠</span> 9. Disclaimers</h2>
+      <p>THE APP IS PROVIDED <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE"</strong> WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</p>
+      <p>We do not warrant that:</p>
+      <ul>
+        <li>The App will be error-free, uninterrupted, or free from bugs or security vulnerabilities.</li>
+        <li>Any defects or errors will be corrected.</li>
+        <li>The App is suitable for any specific compliance or regulatory purpose in your jurisdiction.</li>
+      </ul>
+      <p>You use the App at your own risk. This disclaimer applies to the fullest extent permitted by applicable law.</p>
+    </section>
+
+    <section id="liability">
+      <h2><span class="sec-icon">⚖</span> 10. Limitation of Liability</h2>
+      <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, KISSWARD MULTIMEIA SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES — INCLUDING LOSS OF DATA, LOSS OF REVENUE, OR LOSS OF GOODWILL — ARISING OUT OF OR RELATED TO YOUR USE OF THE APP, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p>Our total cumulative liability arising from or related to these Terms or the App shall not exceed <strong>US $50</strong> (fifty US dollars).</p>
+    </section>
+
+    <section id="indemnity">
+      <h2><span class="sec-icon">🛡</span> 11. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless KISSWARD MULTIMEIA and its officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in any way connected with:</p>
+      <ul>
+        <li>Your use of or access to the App.</li>
+        <li>Your violation of these Terms.</li>
+        <li>Your violation of any applicable law or third-party rights, including data protection obligations.</li>
+        <li>Any data you enter, process, or store using the App.</li>
+      </ul>
+    </section>
+
+    <section id="termination">
+      <h2><span class="sec-icon">🔚</span> 12. Termination</h2>
+      <p>We may suspend or terminate your access to the App at any time, with or without notice, if we believe you have violated these Terms. Upon termination, the licence granted to you under Section 4 ceases immediately.</p>
+      <p>You may stop using the App at any time. Sections 5, 8, 9, 10, 11, and 14 survive termination.</p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="sec-icon">🔄</span> 13. Changes to These Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. The "Effective" date at the top indicates the latest revision. Continued use of the App after changes constitutes your acceptance of the updated Terms. We encourage you to review this page periodically.</p>
+    </section>
+
+    <section id="governing">
+      <h2><span class="sec-icon">🌍</span> 14. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with applicable laws. Any dispute arising from these Terms or the App shall first be attempted to be resolved amicably. If unresolved, disputes shall be subject to the jurisdiction of the courts competent under applicable law.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="sec-icon">📬</span> 15. Contact</h2>
+      <p>Questions about these Terms should be directed to KISSWARD MULTIMEIA via the GitHub repository:</p>
+      <div class="highlight-box">
+        <p>🌐 <strong>Repository:</strong> <a href="https://github.com/flockmanager/flockmanager" target="_blank" rel="noopener">github.com/flockmanager/flockmanager</a><br>
+        🏢 <strong>Publisher:</strong> KISSWARD MULTIMEIA<br>
+        🌍 <strong>App Domain:</strong> <a href="https://flockmanager.github.io/flockmanager/">https://flockmanager.github.io/flockmanager/</a></p>
+      </div>
+    </section>
+
+  </div><!-- /.doc-body -->
+</div><!-- /.content-wrap -->
+
+<footer>
+  <div>© 2026 KISSWARD MULTIMEIA. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://flockmanager.github.io/flockmanager/">Home</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </div>
+</footer>
+
 </body>
 </html>

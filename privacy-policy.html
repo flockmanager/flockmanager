@@ -1,56 +1,405 @@
-﻿<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Privacy Policy | Flock Manager</title>
+  <title>Privacy Policy – Flock Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    body{margin:0;font-family:Segoe UI,Arial,sans-serif;color:#182235;background:#f7fbff;line-height:1.65}
-    main{max-width:900px;margin:0 auto;padding:44px 22px 70px}
-    a{color:#0c6f82;font-weight:700}
-    h1{color:#1c2957;line-height:1.1;margin-bottom:8px}
-    h2{color:#1c2957;margin-top:30px}
-    .updated{color:#627086;font-size:14px;margin-top:0}
-    .panel{background:#fff;border:1px solid #d9e1ec;border-radius:8px;padding:22px;box-shadow:0 14px 30px rgba(24,34,53,.08)}
-    ul{padding-left:22px}
+    :root {
+      --ink: #182235;
+      --muted: #627086;
+      --line: #d9e1ec;
+      --soft: #eef4f8;
+      --panel: #ffffff;
+      --navy: #263a78;
+      --navy-2: #1c2957;
+      --green: #137a63;
+      --teal: #0c8a9d;
+      --gold: #b77d11;
+      --focus: #2e7dd7;
+      --shadow: 0 18px 38px rgba(24,34,53,.08);
+      font-family: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: radial-gradient(circle at 10% 6%, rgba(12,138,157,.10), transparent 28%),
+                  linear-gradient(135deg, #f7fbff 0%, #edf5f4 50%, #fff8ec 100%);
+      min-height: 100vh;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── TOP NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--line);
+      padding: 0 clamp(20px,5vw,80px);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      height: 64px;
+    }
+    .brand-mark {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--navy-2), var(--teal));
+      display: grid; place-items: center;
+      color: #fff; font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 13px;
+      flex-shrink: 0;
+    }
+    .brand-name {
+      font-family: 'Sora', sans-serif;
+      font-weight: 800; font-size: 17px;
+      color: var(--navy-2);
+      text-decoration: none;
+    }
+    .brand-name span { color: var(--teal); }
+    .back-link {
+      margin-left: auto;
+      color: var(--navy-2);
+      font-size: 13px; font-weight: 600;
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--panel);
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .back-link:hover { border-color: var(--teal); box-shadow: 0 4px 12px rgba(12,138,157,.12); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(56px,8vw,96px) clamp(20px,5vw,80px) 0;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .doc-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--navy-2), var(--teal));
+      color: #fff;
+      font-family: 'Sora', sans-serif;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 99px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(32px, 5.5vw, 52px);
+      font-weight: 800; line-height: 1.05;
+      color: var(--navy-2); margin: 0 0 16px;
+      letter-spacing: -.02em;
+    }
+    .hero-meta {
+      color: var(--muted); font-size: 14px;
+      display: flex; flex-wrap: wrap; gap: 6px 20px;
+      margin-bottom: 36px;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 5px; }
+    .divider { height: 1px; background: var(--line); margin: 0 0 48px; }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(20px,5vw,80px) 80px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      position: sticky; top: 80px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+    .toc-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .07em;
+      color: var(--muted); margin: 0 0 12px;
+    }
+    .toc a {
+      display: block; text-decoration: none;
+      color: var(--muted); font-size: 13px;
+      padding: 5px 0 5px 10px;
+      border-left: 2px solid transparent;
+      transition: color .15s, border-color .15s;
+      line-height: 1.4;
+    }
+    .toc a:hover { color: var(--navy-2); border-left-color: var(--teal); }
+
+    /* ── SECTIONS ── */
+    .doc-body section { margin-bottom: 44px; }
+    .doc-body h2 {
+      font-family: 'Sora', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--navy-2);
+      margin: 0 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-icon {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--navy-2), var(--teal));
+      display: inline-grid; place-items: center;
+      font-size: 13px; flex-shrink: 0;
+    }
+    .doc-body p { margin: 0 0 14px; color: var(--ink); }
+    .doc-body ul, .doc-body ol {
+      margin: 0 0 14px; padding-left: 20px;
+    }
+    .doc-body li { margin-bottom: 7px; }
+    .doc-body a { color: var(--teal); font-weight: 600; text-underline-offset: 3px; }
+    .doc-body strong { color: var(--navy-2); }
+
+    .highlight-box {
+      background: linear-gradient(135deg,
+        color-mix(in srgb,var(--teal) 8%,var(--panel)),
+        color-mix(in srgb,var(--navy-2) 4%,var(--panel)));
+      border: 1px solid color-mix(in srgb,var(--teal) 25%,var(--line));
+      border-left: 4px solid var(--teal);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 0 0 14px;
+    }
+    .highlight-box p { margin: 0; }
+
+    .data-table {
+      width: 100%; border-collapse: collapse;
+      margin: 0 0 14px; font-size: 14px;
+    }
+    .data-table th {
+      background: var(--soft);
+      color: var(--muted); font-size: 11px;
+      text-transform: uppercase; letter-spacing: .05em;
+      padding: 9px 12px; text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+    .data-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px clamp(20px,5vw,80px);
+      display: flex; flex-wrap: wrap;
+      align-items: center; gap: 12px;
+      justify-content: space-between;
+      color: var(--muted); font-size: 13px;
+    }
+    footer a { color: var(--navy-2); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    @media (max-width: 740px) {
+      .content-wrap { grid-template-columns: 1fr; }
+      .toc { position: static; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <p><a href="index.html">Back to Flock Manager</a></p>
-    <div class="panel">
-      <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: May 25, 2026</p>
-      <p>Flock Manager is provided by KISSWARD MULTIMEIA to help churches manage member records, giving records, attendance, reports, and backups.</p>
 
-      <h2>Information We Collect</h2>
-      <p>The app may store information entered by authorized users, including names, contact details, membership details, ministry information, attendance records, payment records, notes, and uploaded member photos. When you sign in with Google, the app receives basic Google profile information such as your name and email address.</p>
+<header>
+  <div class="brand-mark">FM</div>
+  <a class="brand-name" href="https://flockmanager.github.io/flockmanager/">Flock<span>Manager</span></a>
+  <a class="back-link" href="https://flockmanager.github.io/flockmanager/">← Back to App</a>
+</header>
 
-      <h2>How Data Is Stored</h2>
-      <p>Flock Manager saves data locally in the user's browser first. If the user grants Google Drive permission, the app also saves and retrieves a backup file named <strong>Flock Manager Data.json</strong> in the signed-in Google account's app data storage.</p>
+<div class="hero">
+  <div class="doc-badge">📋 Legal Document</div>
+  <h1>Privacy Policy</h1>
+  <div class="hero-meta">
+    <span>🗓 Effective: 25 May 2026</span>
+    <span>🏢 KISSWARD MULTIMEIA</span>
+    <span>🌐 flockmanager.github.io/flockmanager</span>
+  </div>
+  <div class="divider"></div>
+</div>
 
-      <h2>Google Drive Access</h2>
-      <p>The app requests the Google Drive app data permission only to create, update, and read its own backup file. The app does not request access to browse all files in the user's Google Drive.</p>
+<div class="content-wrap">
 
-      <h2>How We Use Information</h2>
+  <!-- TABLE OF CONTENTS -->
+  <aside class="toc">
+    <p class="toc-title">Contents</p>
+    <a href="#overview">1. Overview</a>
+    <a href="#data-collected">2. Data We Collect</a>
+    <a href="#how-used">3. How We Use Data</a>
+    <a href="#storage">4. Storage & Security</a>
+    <a href="#google">5. Google Services</a>
+    <a href="#sharing">6. Data Sharing</a>
+    <a href="#retention">7. Retention</a>
+    <a href="#rights">8. Your Rights</a>
+    <a href="#children">9. Minors</a>
+    <a href="#changes">10. Changes</a>
+    <a href="#contact">11. Contact</a>
+  </aside>
+
+  <div class="doc-body">
+
+    <section id="overview">
+      <h2><span class="sec-icon">👁</span> 1. Overview</h2>
+      <div class="highlight-box">
+        <p><strong>Plain-language summary:</strong> Flock Manager is a browser-based church administration tool. Your church's member records stay in your own browser (IndexedDB) and optionally in your own Google Drive. We do not operate a central server that stores your congregation's personal data.</p>
+      </div>
+      <p>This Privacy Policy explains how <strong>KISSWARD MULTIMEIA</strong> ("we", "our", or "us") handles information when you use <strong>Flock Manager</strong> ("the App"), accessible at <a href="https://flockmanager.github.io/flockmanager/">https://flockmanager.github.io/flockmanager/</a>. By using the App, you agree to the practices described here.</p>
+    </section>
+
+    <section id="data-collected">
+      <h2><span class="sec-icon">📦</span> 2. Data We Collect</h2>
+      <p>Flock Manager operates primarily offline. Data falls into two categories:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr><th>Category</th><th>Examples</th><th>Where Stored</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Member Records</strong></td>
+            <td>Names, contact details, photos, ministry roles, next-of-kin</td>
+            <td>Your device (IndexedDB) / your Google Drive</td>
+          </tr>
+          <tr>
+            <td><strong>Payment Records</strong></td>
+            <td>Tithes, offerings, welfare contributions, dates</td>
+            <td>Your device (IndexedDB) / your Google Drive</td>
+          </tr>
+          <tr>
+            <td><strong>Attendance Records</strong></td>
+            <td>Service dates, headcounts (males/females/children)</td>
+            <td>Your device (IndexedDB) / your Google Drive</td>
+          </tr>
+          <tr>
+            <td><strong>Authentication Data</strong></td>
+            <td>Google account name, email address, profile picture URL</td>
+            <td>Your browser's localStorage (session only)</td>
+          </tr>
+          <tr>
+            <td><strong>Preferences</strong></td>
+            <td>Theme (light/dark), selected currency</td>
+            <td>Your browser's localStorage</td>
+          </tr>
+          <tr>
+            <td><strong>Analytics</strong></td>
+            <td>Aggregate usage events (via Firebase Analytics)</td>
+            <td>Google's Firebase servers — anonymised</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>We do <strong>not</strong> collect payment card information, passwords, government ID numbers, or any sensitive financial credentials.</p>
+    </section>
+
+    <section id="how-used">
+      <h2><span class="sec-icon">⚙️</span> 3. How We Use Data</h2>
+      <p>Information collected is used solely to:</p>
       <ul>
-        <li>To display and manage church administration records in the app.</li>
-        <li>To save backups and restore data for the signed-in user.</li>
-        <li>To support app operation, troubleshooting, and security.</li>
+        <li>Operate and display church member, payment, and attendance records within the App.</li>
+        <li>Authenticate your session via Google Sign-In so only authorised administrators access the workspace.</li>
+        <li>Sync your data to your own Google Drive AppData folder (optional, at your request).</li>
+        <li>Understand aggregate usage patterns to improve the App's reliability and features (Firebase Analytics — no personally identifiable information is shared).</li>
       </ul>
+      <p>We do <strong>not</strong> use your data for advertising, profiling, or any commercial purpose beyond operating the App.</p>
+    </section>
 
-      <h2>Analytics</h2>
-      <p>The app may use Microsoft Clarity to understand general usage and improve the product. Analytics tools may collect technical information such as browser type, page interactions, and device information.</p>
+    <section id="storage">
+      <h2><span class="sec-icon">🔒</span> 4. Storage & Security</h2>
+      <p>All church records are stored exclusively in:</p>
+      <ul>
+        <li><strong>IndexedDB</strong> — a browser-native database on your own device. Data never leaves your browser unless you explicitly export a backup or enable Google Drive sync.</li>
+        <li><strong>Your Google Drive AppData folder</strong> — if you grant Drive permission. Only you (and authorised users of the same Google account) can access this folder. KISSWARD MULTIMEIA cannot read or write to it.</li>
+      </ul>
+      <p>We recommend restricting App access to trusted administrators and signing out after each session. Because data lives on your device, <strong>you are responsible for maintaining physical and account security</strong> of the devices on which the App is used.</p>
+    </section>
 
-      <h2>Data Sharing</h2>
-      <p>We do not sell personal information. Data entered into the app is intended for use by the church or organization operating the app. Google Drive data remains connected to the Google account used for sign-in.</p>
+    <section id="google">
+      <h2><span class="sec-icon">🔑</span> 5. Google Services</h2>
+      <p>Flock Manager integrates the following Google services:</p>
+      <ul>
+        <li><strong>Google Sign-In (OAuth 2.0)</strong> — Used to authenticate you. We receive your name, email, and profile photo from Google upon sign-in. This data is stored only in your browser's localStorage for the duration of your session.</li>
+        <li><strong>Google Drive AppData API</strong> — Used to save and restore backup files in a private, App-specific folder in your Google account. Your Drive files are not accessible to us.</li>
+        <li><strong>Firebase Authentication &amp; Analytics</strong> — Used for sign-in management and anonymous usage analytics. Subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+      </ul>
+      <p>Use of these services is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" rel="noopener">Terms of Service</a>.</p>
+    </section>
 
-      <h2>Data Control</h2>
-      <p>Users can export backups, save data to their PC, and manage access through their Google account permissions. Removing app access from a Google account may stop future Drive backups.</p>
+    <section id="sharing">
+      <h2><span class="sec-icon">🤝</span> 6. Data Sharing</h2>
+      <p>We do <strong>not</strong> sell, rent, or share your personal data or your church's member records with any third party, except:</p>
+      <ul>
+        <li><strong>Google</strong> — as described in Section 5 above, solely to provide authentication and optional Drive sync features.</li>
+        <li><strong>Legal obligations</strong> — if required to do so by law or a valid legal process.</li>
+      </ul>
+    </section>
 
-      <h2>Contact</h2>
-      <p>For privacy questions, contact KISSWARD MULTIMEIA at <a href="mailto:tooncitigh@gmail.com">tooncitigh@gmail.com</a>.</p>
-    </div>
-  </main>
+    <section id="retention">
+      <h2><span class="sec-icon">🗑</span> 7. Data Retention</h2>
+      <p>Because records are stored on your device and in your own Google Drive, <strong>you control retention entirely</strong>. You may:</p>
+      <ul>
+        <li>Delete individual member, payment, or attendance records from within the App.</li>
+        <li>Clear your browser's site data to remove all App data from your device.</li>
+        <li>Delete the Flock Manager backup file from your Google Drive AppData folder via <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google Account Permissions</a>.</li>
+      </ul>
+      <p>Firebase Analytics data is retained in accordance with <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's data retention policies</a> and is not linked to individual users.</p>
+    </section>
+
+    <section id="rights">
+      <h2><span class="sec-icon">✅</span> 8. Your Rights</h2>
+      <p>Depending on your jurisdiction, you may have rights to access, correct, or delete personal data we hold. Because we hold <strong>no server-side copy</strong> of your church records, most rights can be exercised directly within the App. For any residual data (e.g. analytics), contact us at the address below.</p>
+    </section>
+
+    <section id="children">
+      <h2><span class="sec-icon">🧒</span> 9. Minors</h2>
+      <p>Flock Manager is an administrative tool intended for use by adult church administrators. Minors should not create accounts or use the App independently. Records of minor congregation members may be entered by authorised adult administrators in the course of legitimate church administration, subject to applicable laws and the church's own data protection policies.</p>
+    </section>
+
+    <section id="changes">
+      <h2><span class="sec-icon">📝</span> 10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. The "Effective" date at the top of this page reflects the latest revision. Continued use of the App after any update constitutes acceptance of the revised policy. Material changes will be noted in the App's release notes.</p>
+    </section>
+
+    <section id="contact">
+      <h2><span class="sec-icon">📬</span> 11. Contact</h2>
+      <p>For privacy-related questions or concerns, contact KISSWARD MULTIMEIA via the GitHub repository at:</p>
+      <div class="highlight-box">
+        <p>🌐 <strong>Repository:</strong> <a href="https://github.com/flockmanager/flockmanager" target="_blank" rel="noopener">github.com/flockmanager/flockmanager</a><br>
+        🏢 <strong>Publisher:</strong> KISSWARD MULTIMEIA<br>
+        🌍 <strong>App Domain:</strong> <a href="https://flockmanager.github.io/flockmanager/">https://flockmanager.github.io/flockmanager/</a></p>
+      </div>
+    </section>
+
+  </div><!-- /.doc-body -->
+</div><!-- /.content-wrap -->
+
+<footer>
+  <div>© 2026 KISSWARD MULTIMEIA. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="https://flockmanager.github.io/flockmanager/">Home</a>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+  </div>
+</footer>
+
 </body>
 </html>
