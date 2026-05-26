@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://flockmanager.github.io/flockmanager/sitemap.xml
